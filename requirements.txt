@@ -1,3 +1,4 @@
 python-dotenv
 elasticsearch
 langchain
+langchain_openai
