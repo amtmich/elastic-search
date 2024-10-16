@@ -12,7 +12,7 @@ def display_results(results):
         display_result(result)
         st.markdown("---")
 
-def display_result(result, score=True):
+def display_result(result, score_display=True):
     title = result["_source"].get("title2", "Untitled")
     text = result["_source"].get("html_text", "No text available")
     topics = result["_source"].get("topics")
@@ -37,7 +37,7 @@ def display_result(result, score=True):
     #    categories = ', '.join(map(str, entities))
     #    st.write(f"**Organizations mentioned (auto generation using AI):** {categories}")
 
-    if score == True:
+    if score_display is True:
         st.write(f"**Relevance score**: {score:.2f}")
     #for record in find_similar_records(os.getenv('ELASTIC_INDEX'), id):
     #    st.write(record["_source"]['title2'])

@@ -21,8 +21,9 @@ def run(company):
                 "company": company
             }
             display_result(result, False)
-            prompt_sender = LangchainPromptSender("", os.getenv('OPENAI_KEY'))
-            prompt_sender.send_prompt(prompt_template, variables)
-            st.write(f"""**How "{company}" is related to this news? (AI generated):** {prompt_sender.get_content()}""")
+            with st.spinner(f'Analyzing news for {company} context'):
+                prompt_sender = LangchainPromptSender("", os.getenv('OPENAI_KEY'))
+                prompt_sender.send_prompt(prompt_template, variables)
+                st.write(f"""**How "{company}" is related to this news? (AI generated):** {prompt_sender.get_content()}""")
             st.markdown("---")
             

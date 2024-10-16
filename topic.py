@@ -21,8 +21,9 @@ def run(topic):
                 "topic": topic
             }
             display_result(result, False)
-            prompt_sender = LangchainPromptSender("", os.getenv('OPENAI_KEY'))
-            prompt_sender.send_prompt(prompt_template, variables)
-            st.write(f"""**How "{topic}" is related to this news? (AI generated)** {prompt_sender.get_content()}""")
+            with st.spinner(f'Analyzing news for {topic} context'):
+                prompt_sender = LangchainPromptSender("", os.getenv('OPENAI_KEY'))
+                prompt_sender.send_prompt(prompt_template, variables)
+                st.write(f"""**How "{topic}" is related to this news? (AI generated)** {prompt_sender.get_content()}""")
             st.markdown("---")
 
